@@ -1,16 +1,19 @@
 package com.github.gabrielsilper.models;
 
-public class City {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class City implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String name;
-    private String code;
     private State state;
 
     public City() {
     }
 
-    public City(String name, String code, State state) {
+    public City(String name, State state) {
         this.name = name;
-        this.code = code;
         this.state = state;
     }
 
@@ -20,14 +23,6 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public State getEstado() {
@@ -42,7 +37,6 @@ public class City {
     public String toString() {
         return "City{" +
                 "name='" + name + '\'' +
-                ", code='" + code + '\'' +
                 ", state=" + state +
                 '}';
     }

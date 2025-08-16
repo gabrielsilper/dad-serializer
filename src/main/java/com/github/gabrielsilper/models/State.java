@@ -1,6 +1,11 @@
 package com.github.gabrielsilper.models;
 
-public class State {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class State implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String name;
     private String code;
     private Country country;
@@ -30,11 +35,11 @@ public class State {
         this.code = code;
     }
 
-    public Country getPais() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setPais(Country country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 

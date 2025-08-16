@@ -11,13 +11,12 @@ public class DeserializeCountry {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         FileInputStream file = new FileInputStream("countries.dat");
 
-        ObjectInputStream countryDeserialize = new ObjectInputStream(file);
+        ObjectInputStream countryDeserializer = new ObjectInputStream(file);
 
         while (true) {
             try {
-                Country country = (Country) countryDeserialize.readObject();
-                System.out.println(country.getName());
-                System.out.println(country.getContinent());
+                Country country = (Country) countryDeserializer.readObject();
+                System.out.println(country);
             } catch (EOFException e) {
                 break;
             }
