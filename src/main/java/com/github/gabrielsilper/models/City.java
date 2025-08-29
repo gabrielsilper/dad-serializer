@@ -2,6 +2,7 @@ package com.github.gabrielsilper.models;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class City implements Serializable {
     @Serial
@@ -12,9 +13,14 @@ public class City implements Serializable {
     public City() {
     }
 
+    public City(String name) {
+        this.name = name;
+    }
+
     public City(String name, State state) {
         this.name = name;
         this.state = state;
+        state.addCity(this);
     }
 
     public String getName() {
@@ -25,12 +31,25 @@ public class City implements Serializable {
         this.name = name;
     }
 
-    public State getEstado() {
+    public State getState() {
         return state;
     }
 
-    public void setEstado(State state) {
+    public void setState(State state) {
         this.state = state;
+        state.addCity(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return Objects.equals(name, city.name) && Objects.equals(state, city.state);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, state);
     }
 
     @Override
